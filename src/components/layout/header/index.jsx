@@ -9,18 +9,19 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [headerColor, setHeaderColor] = useState("transparent"); // Color inicial
+  const [isScrolled, setIsScrolled] = useState(false); // Estado para detectar el scroll
 
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 100) {
-        setHeaderColor("#1a1a32"); // Cambia el color al hacer scroll
+        setIsScrolled(true); // Cuando el scroll es mayor a 100px
       } else {
-        setHeaderColor("transparent"); // Vuelve al color transparente
+        setIsScrolled(false); // Cuando el scroll es menor a 100px
       }
     };
+
     window.addEventListener("scroll", handleScroll);
-    // Limpia el evento al desmontar el componente
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -28,7 +29,10 @@ const Header = () => {
 
 
   return (
-    <Navbar expand="lg" style={{ backgroundColor: headerColor }} className="header">
+    <Navbar
+      expand="lg"
+      className={`header ${isScrolled ? "scrolled" : ""}`} // Aplica la clase "scrolled" al hacer scroll
+    >
       <Container fluid className="contenedorHeader">
       <Col className="pintadoHeader">
           <Nav className="">

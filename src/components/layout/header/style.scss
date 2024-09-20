@@ -9,13 +9,17 @@
   width: 100%;
   background-color: rgba(39, 39, 39, 0);
   z-index: 100;
-  transition: transform 0.5s ease;
+  transition: background-color 0.6s ease, box-shadow 0.6s ease;
   &.hidden {
     transform: translateY(-100%); /* Mueve el encabezado hacia arriba */
   }
   .contenedorHeader {
     display: flex;
     padding: 0 15rem;
+  }
+  &.scrolled {
+    background-color: rgba(26, 26, 50, 0.9); /* Color violeta */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); /* Sombra */
   }
   .nombreHeader {
     font-weight: bold;
