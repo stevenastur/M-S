@@ -1,0 +1,15 @@
+@import "../../components/variebles.scss";
+
+#contenedorInicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // margin: 0;
+  // padding: 0;
+  .imagenfondo {
+    width: 100vw;
+    // height: 100vh;
+  }
+  background-color: $color-principal;
+  min-height: 150vh;
+}

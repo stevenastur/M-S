@@ -1,38 +1,45 @@
 @import "../../variebles.scss";
 
+
 .header {
   height: 7rem;
-  position: fixed !important;
+  position: fixed!important;
   top: 0;
   left: 0;
   width: 100%;
   background-color: rgba(39, 39, 39, 0);
   z-index: 100;
-  .contenedorHeader{
+  transition: transform 0.5s ease;
+  &.hidden {
+    transform: translateY(-100%); /* Mueve el encabezado hacia arriba */
+  }
+  .contenedorHeader {
     display: flex;
-    flex-direction: row;
+    padding: 0 15rem;
   }
   .nombreHeader {
-    .izquierda{
-      padding-left: 6rem;
-      color: $color-crema;
-    }
     font-weight: bold;
-    color: $color-secundario;
+    color: $color-crema;
     font-size: 2.7rem;
     text-decoration: none;
+    display: flex;
+    justify-content: center;
+    .izquierda {
+      color: $color-secundario;
+    }
   }
   .linkHeader {
     color: $color-crema;
     text-decoration: none;
     font-size: 1.3rem;
   }
-  .linkHeader:hover{
+  .linkHeader:hover {
     color: $color-secundario;
   }
   .pintadoHeader {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
+    .navbar-nav{
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
 }

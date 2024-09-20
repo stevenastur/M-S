@@ -1,5 +1,14 @@
 @import "./components/variebles.scss";
 
-.aplicacion{
-    background-color: $color-principal;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  
+.aplicacion {
+  background-color: $color-principal;
 }

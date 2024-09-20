@@ -1,27 +1,59 @@
-import { Col, Container, Nav, Navbar, NavbarToggle, NavbarCollapse } from "react-bootstrap";
+import {
+  Col,
+  Container,
+  Nav,
+  Navbar,
+} from "react-bootstrap";
 import "./style.scss";
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 const Header = () => {
+  const [headerColor, setHeaderColor] = useState("transparent"); // Color inicial
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setHeaderColor("#1a1a32"); // Cambia el color al hacer scroll
+      } else {
+        setHeaderColor("transparent"); // Vuelve al color transparente
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    // Limpia el evento al desmontar el componente
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
   return (
-    <Navbar expand="lg" className="header">
+    <Navbar expand="lg" style={{ backgroundColor: headerColor }} className="header">
       <Container fluid className="contenedorHeader">
-        <Col className="nombreHeader" xs={5}>
-          <NavLink to="/" className="nombreHeader izquierda">S</NavLink>
-          <NavLink to="/" className="nombreHeader">A</NavLink>
+      <Col className="pintadoHeader">
+          <Nav className="">
+            <Nav.Link href="/" className="linkHeader">Inicio</Nav.Link>
+            <Nav.Link href="galeria" className="linkHeader">Galeria</Nav.Link>
+          </Nav>
         </Col>
-        <NavbarToggle aria-controls="basic-navbar-nav" />
-        <NavbarCollapse id="basic-navbar-nav">
-          <Col className="pintadoHeader" xs={7}>
-            <a href="#home" className="linkHeader">Home</a>
-            <a href="#aboutMe" className="linkHeader">About me</a>
-            <a href="#portafolio" className="linkHeader">Portafolio</a>
-            <a href="#contact" className="linkHeader">Contact</a>
-          </Col>
-        </NavbarCollapse>
+        <Col className="nombreHeader">
+          <NavLink to="/" className="nombreHeader izquierda">
+            M
+          </NavLink>
+          <NavLink to="/" className="nombreHeader">
+            S
+          </NavLink>
+        </Col>
+        <Col className="pintadoHeader">
+          <Nav className="">
+            <Nav.Link href="notas" className="linkHeader">Notas</Nav.Link>
+            <Nav.Link href="nosotros" className="linkHeader">Nosotros</Nav.Link>
+          </Nav>
+        </Col>
       </Container>
     </Navbar>
   );
 };
 
 export { Header };
+
